@@ -9,6 +9,26 @@
 
 using namespace std;
 
+// Color Constants
+const int BLUE = 3;
+const int GREEN = 10;
+const int RED = 12;
+const int CYAN = 11;
+const int YELLOW = 14;
+const int WHITE = 15;
+
+void setColor(int color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void printHeader(string title) {
+    setColor(CYAN);
+    cout << "========================================" << endl;
+    cout << "\t    " << title << endl;
+    cout << "========================================" << endl << endl;
+    setColor(WHITE);
+}
+
 // Function prototypes
 bool signup();
 bool login();
@@ -23,23 +43,22 @@ string getPassword(); // Helper function for password input
 
 int main()
 {
-    system("color 0B"); // Cyan on Black for a more professional look
+    // Set terminal to UTF-8 to support box-drawing characters
+    SetConsoleOutputCP(CP_UTF8);
+    system("color 3");
     bool validInput = false;
     char choice;
 
-    while (true)
+    while (!validInput)
     {
-        system("cls");
-        cout << "\n\t========================================" << endl;
-        cout << "\t          BINGO GAME SYSTEM " << endl;
-        cout << "\t========================================" << endl << endl;
+        printHeader("BINGO - 2 PLAYER PRO");
+        setColor(YELLOW);
         cout << "\t[1] LOGIN" << endl;
         cout << "\t[2] SIGNUP" << endl;
-        cout << "\t[3] EXIT" << endl;
-        cout << "\n\tENTER CHOICE: ";
-        
-        choice = _getch(); // Using getch for smoother menu navigation
-        cout << choice << endl;
+        setColor(WHITE);
+        cout << "\nENTER YOUR CHOICE: ";
+        cin >> choice;
+        cin.ignore(); // Clear input buffer
 
         if (choice == '1')
         {
@@ -49,12 +68,16 @@ int main()
                 found = login();
                 if (!found)
                 {
-                    cout << "\n\tLogin failed. Try again (Enter) or return to menu (0): ";
-                    char retry = _getch();
+                    cout << "Login failed. Try again or press 0 to return to main menu: ";
+                    char retry;
+                    cin >> retry;
                     if (retry == '0') break;
+                    cin.ignore();
                 }
             }
             if (found) mainMenu();
+            validInput = false;
+            system("cls");
         }
         else if (choice == '2')
         {
@@ -64,22 +87,20 @@ int main()
                 valid = signup();
                 if (!valid)
                 {
-                    cout << "\n\tPress any key to try again or 0 to return to menu: ";
+                    cout << "Press any key to try again or 0 to return to main menu: ";
                     char retry = _getch();
                     if (retry == '0') break;
                 }
             }
             if (valid) mainMenu();
-        }
-        else if (choice == '3')
-        {
-            cout << "\n\tTHANK YOU FOR PLAYING!" << endl;
-            break;
+            validInput = false;
+            system("cls");
         }
         else
         {
-            cout << "\n\tINVALID INPUT!\n\n";
-            Sleep(1000); // Wait for a second
+            cout << "\nINVALID INPUT!\n\n";
+            system("pause");
+            system("cls");
         }
     }
     return 0;
@@ -209,9 +230,13 @@ bool login()
 int gameID()
 {
     srand(static_cast<unsigned int>(time(0)));
-    int thisGameID = rand() % 9000 + 1000; // Generate 4-digit ID
+    int thisGameID = rand() % 9000 + 1000;
     system("cls");
-    cout << "YOUR GAME ID IS: " << thisGameID << endl;
+    setColor(GREEN);
+    cout << "----------------------------------------" << endl;
+    cout << "      SUCCESS! GAME ID: " << thisGameID << endl;
+    cout << "----------------------------------------" << endl;
+    setColor(WHITE);
     return thisGameID;
 }
 
@@ -245,23 +270,37 @@ void generateBoard(int board1[][5])
 void displayBoard(int board1[][5], string p, int id)
 {
     system("cls");
-    cout << "\t========================================" << endl;
-    cout << "\t   GAME ID: " << id << " | PLAYER: " << p << endl;
-    cout << "\t========================================" << endl << endl;
+    setColor(CYAN);
+    cout << "GAME ID: " << id << " | PLAYER: " << p << endl;
+    cout << "----------------------------------------" << endl << endl;
 
-    cout << "\t     +----+----+----+----+----+" << endl;
+    setColor(YELLOW);
+    cout << "  +------+------+------+------+------+" << endl;
     for (int i = 0; i < 5; i++)
     {
-        cout << "\t     |";
+        cout << "  |";
         for (int j = 0; j < 5; j++)
         {
-            if (board1[i][j] == 0)
-                cout << setw(3) << " X " << "|";
-            else
-                cout << setw(3) << board1[i][j] << " |";
+            if (board1[i][j] == 0) {
+                setColor(RED);
+                cout << "  X   ";
+                setColor(YELLOW);
+                cout << "|";
+            }
+            else {
+                setColor(WHITE);
+                if (board1[i][j] < 10) cout << "  " << board1[i][j] << "   ";
+                else cout << "  " << board1[i][j] << "  ";
+                setColor(YELLOW);
+                cout << "|";
+            }
         }
-        cout << endl << "\t     +----+----+----+----+----+" << endl;
+        cout << endl;
+        if (i < 4)
+            cout << "  +------+------+------+------+------+" << endl;
     }
+    cout << "  +------+------+------+------+------+" << endl;
+    setColor(WHITE);
     cout << endl;
 }
 
@@ -396,8 +435,15 @@ bool winCheck(int board[][5], string p, int id)
             fHand.close();
         }
 
-        cout << "\n\nCONGRATULATIONS " << p << "! YOU COMPLETED " << lines << " LINES!" << endl;
-        cout << "YOUR SCORE: " << score << endl << endl;
+        cout << "\n\n";
+        setColor(GREEN);
+        cout << "****************************************" << endl;
+        cout << "   CONGRATULATIONS " << p << "!" << endl;
+        cout << "   YOU COMPLETED " << lines << " LINES!" << endl;
+        cout << "   YOUR SCORE: " << score << endl;
+        cout << "****************************************" << endl;
+        setColor(WHITE);
+        cout << endl;
         system("pause");
         return true;
     }
@@ -411,22 +457,28 @@ void mainMenu()
 
     while (true)
     {
-        cout << "......................................" << endl;
-        cout << "\t      B I N G O" << endl;
-        cout << "......................................" << endl << endl;
-
-        cout << "\t1. Play Game" << endl << endl;
-        cout << "\t2. Game History" << endl << endl;
-        cout << "\t3. How to Play" << endl << endl;
-        cout << "\t4. Exit" << endl << endl;
-        cout << "Choose your option: ";
+        printHeader("MAIN MENU");
+        setColor(YELLOW);
+        cout << "\t[1] Play Game" << endl;
+        cout << "\t[2] Game History" << endl;
+        cout << "\t[3] How to Play" << endl;
+        cout << "\t[4] Exit" << endl;
+        setColor(WHITE);
+        cout << "\nChoose your option: ";
 
         if (!(cin >> mainChoice))
         {
             cin.clear();
             cin.ignore(10000, '\n');
+            setColor(RED);
+            cout << "\nINVALID INPUT! PLEASE ENTER A NUMBER (1-4).\n";
+            setColor(WHITE);
+            system("pause");
+            system("cls");
             continue;
         }
+
+        cin.ignore(); // Clear newline from buffer
 
         switch (mainChoice)
         {
@@ -469,15 +521,17 @@ void mainMenu()
             else
             {
                 string id, name, score;
-                cout << "\tGAME HISTORY\n\n";
-                cout << "\tGame ID\tPlayer\t\tScore\n";
-                cout << "\t-------\t-------\t\t-----\n";
+                printHeader("GAME HISTORY");
+                setColor(CYAN);
+                cout << left << setw(10) << "Game ID" << setw(15) << "Player" << setw(10) << "Score" << endl;
+                cout << "----------------------------------------" << endl;
+                setColor(WHITE);
 
                 while (getline(fHand, id) && getline(fHand, name) && getline(fHand, score))
                 {
-                    cout << "\t" << setw(7) << left << id
-                        << "\t" << setw(10) << left << name
-                        << "\t" << score << endl;
+                    cout << left << setw(10) << id
+                        << setw(15) << name
+                        << setw(10) << score << endl;
                 }
                 fHand.close();
             }
@@ -488,14 +542,17 @@ void mainMenu()
         case 3: // How to Play
         {
             system("cls");
-            cout << "\n\t      INSTRUCTIONS\n\n";
-            cout << "1. Each player gets a 5x5 board with random numbers (1-25)\n\n";
-            cout << "2. Players take turns selecting numbers from their board\n\n";
-            cout << "3. Selected numbers are marked on both boards\n\n";
-            cout << "4. The first player to complete 5 lines wins:\n\n";
-            cout << "\t- Rows, columns, or diagonals count as lines\n\n";
-            cout << "\t- Each line is worth 100 points\n\n";
-            cout << "5. The player with the highest score wins!\n\n";
+            printHeader("HOW TO PLAY");
+            setColor(YELLOW);
+            cout << "1. "; setColor(WHITE); cout << "Each player gets a 5x5 board (1-25).\n";
+            setColor(YELLOW);
+            cout << "2. "; setColor(WHITE); cout << "Players take turns selecting numbers.\n";
+            setColor(YELLOW);
+            cout << "3. "; setColor(WHITE); cout << "Numbers are marked with a Red 'X' on both boards.\n";
+            setColor(YELLOW);
+            cout << "4. "; setColor(WHITE); cout << "Complete 5 lines (Row/Col/Diag) to win.\n";
+            setColor(YELLOW);
+            cout << "5. "; setColor(WHITE); cout << "Each line is worth 100 points.\n\n";
             system("pause");
             system("cls");
             break;
