@@ -23,18 +23,23 @@ string getPassword(); // Helper function for password input
 
 int main()
 {
-    system("color 3");
+    system("color 0B"); // Cyan on Black for a more professional look
     bool validInput = false;
     char choice;
 
-    while (!validInput)
+    while (true)
     {
-        cout << "\t\t LOGIN MENU " << endl << endl << endl;
-        cout << "\tPRESS 1 TO LOGIN" << endl;
-        cout << "\tPRESS 2 TO SIGNUP" << endl;
-        cout << "\nENTER HERE: ";
-        cin >> choice;
-        cin.ignore(); // Clear input buffer
+        system("cls");
+        cout << "\n\t========================================" << endl;
+        cout << "\t          BINGO GAME SYSTEM " << endl;
+        cout << "\t========================================" << endl << endl;
+        cout << "\t[1] LOGIN" << endl;
+        cout << "\t[2] SIGNUP" << endl;
+        cout << "\t[3] EXIT" << endl;
+        cout << "\n\tENTER CHOICE: ";
+        
+        choice = _getch(); // Using getch for smoother menu navigation
+        cout << choice << endl;
 
         if (choice == '1')
         {
@@ -44,16 +49,12 @@ int main()
                 found = login();
                 if (!found)
                 {
-                    cout << "Login failed. Try again or press 0 to return to main menu: ";
-                    char retry;
-                    cin >> retry;
+                    cout << "\n\tLogin failed. Try again (Enter) or return to menu (0): ";
+                    char retry = _getch();
                     if (retry == '0') break;
-                    cin.ignore();
                 }
             }
             if (found) mainMenu();
-            validInput = false;
-            system("cls");
         }
         else if (choice == '2')
         {
@@ -63,20 +64,22 @@ int main()
                 valid = signup();
                 if (!valid)
                 {
-                    cout << "Press any key to try again or 0 to return to main menu: ";
+                    cout << "\n\tPress any key to try again or 0 to return to menu: ";
                     char retry = _getch();
                     if (retry == '0') break;
                 }
             }
             if (valid) mainMenu();
-            validInput = false;
-            system("cls");
+        }
+        else if (choice == '3')
+        {
+            cout << "\n\tTHANK YOU FOR PLAYING!" << endl;
+            break;
         }
         else
         {
-            cout << "\nINVALID INPUT!\n\n";
-            system("pause");
-            system("cls");
+            cout << "\n\tINVALID INPUT!\n\n";
+            Sleep(1000); // Wait for a second
         }
     }
     return 0;
@@ -242,23 +245,24 @@ void generateBoard(int board1[][5])
 void displayBoard(int board1[][5], string p, int id)
 {
     system("cls");
-    cout << "YOUR GAME ID IS: " << id << endl << endl;
-    cout << "HERE IS YOUR BOARD " << p << "!" << endl << endl << endl;
+    cout << "\t========================================" << endl;
+    cout << "\t   GAME ID: " << id << " | PLAYER: " << p << endl;
+    cout << "\t========================================" << endl << endl;
 
-    cout << "|";
+    cout << "\t     +----+----+----+----+----+" << endl;
     for (int i = 0; i < 5; i++)
     {
+        cout << "\t     |";
         for (int j = 0; j < 5; j++)
         {
             if (board1[i][j] == 0)
-                cout << setw(3) << "X" << setw(3) << "|"; // Mark selected numbers with X
+                cout << setw(3) << " X " << "|";
             else
-                cout << setw(3) << board1[i][j] << setw(3) << "|";
+                cout << setw(3) << board1[i][j] << " |";
         }
-        if (i != 4)
-            cout << endl << endl << "|";
+        cout << endl << "\t     +----+----+----+----+----+" << endl;
     }
-    cout << endl << endl;
+    cout << endl;
 }
 
 int toss(string p1, string p2)
@@ -421,13 +425,8 @@ void mainMenu()
         {
             cin.clear();
             cin.ignore(10000, '\n');
-            cout << "INVALID INPUT! PLEASE ENTER A NUMBER (1-4).\n";
-            system("pause");
-            system("cls");
             continue;
         }
-
-        cin.ignore(); // Clear newline from buffer
 
         switch (mainChoice)
         {
