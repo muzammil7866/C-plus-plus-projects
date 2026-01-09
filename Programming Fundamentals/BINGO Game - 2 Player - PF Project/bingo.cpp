@@ -26,7 +26,7 @@ void printHeader(string title) {
     cout << "========================================" << endl;
     cout << "\t    " << title << endl;
     cout << "========================================" << endl << endl;
-    setColor(WHITE);
+    setColor(WHITE);    
 }
 
 // Function prototypes
