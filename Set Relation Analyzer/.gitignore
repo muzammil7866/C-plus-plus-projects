@@ -1,0 +1,36 @@
+# Visual Studio cache/options
+.vs/
+*.VC.db
+*.VC.VC.opendb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+x64/
+x86/
+Debug/
+Release/
+out/
+
+# C++ intermediate/build files
+*.obj
+*.ipdb
+*.iobj
+*.pdb
+*.ilk
+*.idb
+*.log
+*.tlog
+*.lastbuildstate
+*.recipe
+
+# MSBuild generated folders
+[Bb]in/
+[Oo]bj/
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
