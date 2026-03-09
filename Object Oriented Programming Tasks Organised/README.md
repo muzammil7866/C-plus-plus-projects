@@ -1,4 +1,4 @@
-﻿# Organized Cpp By Concept
+﻿# OOP C++ Practice Repository
 
 C++ files are grouped by concept. Each folder README includes all .cpp/.h names from that folder tree.
 
@@ -17,6 +17,3 @@ C++ files are grouped by concept. Each folder README includes all .cpp/.h names 
 - 12 Embedded Systems: 1 source files
 - FLEX MANAGEMENT SYSTEM: 8 source files
 
-## Notes
-- Build outputs are ignored via .gitignore.
-- Keep new files in the nearest matching concept folder.
