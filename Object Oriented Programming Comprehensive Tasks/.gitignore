@@ -1,0 +1,38 @@
+﻿# C++ / Visual Studio build artifacts
+*.obj
+*.o
+*.pch
+*.pdb
+*.ilk
+*.idb
+*.exe
+*.dll
+*.lib
+*.exp
+
+# Visual Studio user and cache files
+.vs/
+*.VC.db
+*.VC.opendb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build directories
+x64/
+Debug/
+Release/
+[Bb]in/
+[Oo]bj/
+ipch/
+
+# MSBuild logs and tlog files
+*.log
+*.tlog
+*.lastbuildstate
+
+# Temporary files
+*.tmp
+*.temp
+~$*
