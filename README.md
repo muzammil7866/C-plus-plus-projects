@@ -1,43 +1,57 @@
-# C Plus Plus Projects 💻
+# C Plus Plus Projects
 
-This repository presents a professional collection of C++ projects developed through algorithmic practice, systems-level engineering, and selected BS AI coursework in computing fundamentals.
+This repository is a professional C++ project collection developed through algorithmic practice, systems-level engineering, and selected BS AI coursework in computing foundations.
 
-## 🎯 Purpose
+## Table of Contents
 
-The objective is to strengthen high-performance programming foundations while building robust software solutions with clean logic, efficient memory usage, and scalable architecture.
+- [Overview](#overview)
+- [Business Goals](#business-goals)
+- [Technology Stack](#technology-stack)
+- [How to Use This Repository](#how-to-use-this-repository)
+- [Repository Guidelines](#repository-guidelines)
+- [Code Guidelines](#code-guidelines)
+- [Future Direction](#future-direction)
 
-## 💼 Business Goals
+## Overview
 
-- Build performance-critical components suitable for real-time and resource-sensitive systems.
-- Improve software reliability through strong data structure and algorithm design.
-- Create reusable C++ modules that support enterprise and product engineering workflows.
-- Demonstrate engineering discipline for production-quality backend and systems development.
+The repository focuses on robust software design, efficient algorithm implementation, and maintainable C++ engineering practices.
 
-## 🧰 Tech Stack
+## Business Goals
 
-- Languages: C++
-- Concepts: OOP, DSA, memory management, modular architecture
-- Toolchains: GCC, G++, MSVC (project dependent)
-- Development Environments: VS Code, Visual Studio
-- Version Control: Git/GitHub
+- Develop performance-conscious software components for practical systems use.
+- Improve reliability through disciplined data structure and algorithm design.
+- Build reusable C++ modules that can support backend and systems workflows.
+- Demonstrate production-minded engineering quality for technical recruiting contexts.
 
-## 🧠 Engineering Themes
+## Technology Stack
 
-- Object-oriented application design
-- Data structure implementation and optimization
-- Algorithmic problem solving and computational efficiency
-- Console and system-oriented mini applications
+- Language: C++
+- Concepts: OOP, DSA, memory management, modular design
+- Toolchains: GCC/G++, MSVC (project dependent)
+- Development environments: VS Code, Visual Studio
+- Version control: Git/GitHub
 
-## 🚀 Future Direction
+## How to Use This Repository
 
-This repository is intentionally open-ended. Future contributions may include:
-- Advanced STL and modern C++ patterns
-- Multithreading and concurrency-focused implementations
-- Performance benchmarking and profiling-driven optimization
-- Integration-oriented C++ modules for AI and backend systems
+1. Open a project folder based on topic or use case.
+2. Check for project-specific instructions or compiler settings.
+3. Build and run using the matching toolchain for that project.
+4. Use outputs as references for extending or benchmarking implementations.
 
-## 📌 Usage Notes
+## Repository Guidelines
 
-- Projects are organized by task type, concept area, and applied use case.
-- Build/run steps may vary across folders based on project complexity.
-- New projects will continue to be added as engineering depth and practical exposure increase.
+- Each folder is an independent project or assignment track.
+- Project structure can vary based on problem type and implementation depth.
+- Keep new additions self-contained with clear entry points.
+- Prefer readable and testable implementations over overly compact code.
+
+## Code Guidelines
+
+- Use consistent naming and clear class/function boundaries.
+- Favor standard library usage where it improves clarity and reliability.
+- Keep memory ownership explicit and avoid unnecessary global state.
+- Add brief comments for non-trivial logic and algorithmic decisions.
+
+## Future Direction
+
+This repository remains actively open for expansion, including advanced STL usage, concurrency patterns, profiling-guided optimization, and stronger integration-ready C++ modules.
