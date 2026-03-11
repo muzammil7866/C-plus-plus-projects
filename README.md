@@ -1,32 +1,28 @@
-# C++ Projects Archive
+# C Plus Plus Projects
 
-Welcome to my collection of C++ projects! This repository documents my journey through the core foundations of Computer Science during my **BS in Artificial Intelligence**, as well as practical applications built for freelance clients.
+This repository contains a growing set of C++ projects across coursework, practice, and applied problem solving.
 
-## 📂 Repository Structure
+## Scope
 
-### 1. 🎓 Academic Coursework
-This section contains labs and assignments from my university curriculum:
-* **Programming Fundamentals (PF):** Basic logic, loops, functions, and pointers.
-* **Object-Oriented Programming (OOP):** Implementation of classes, inheritance, polymorphism, and encapsulation.
-* **Data Structures & Algorithms (DSA):** Custom implementations of Linked Lists, Trees, Graphs, Stacks, and Queues.
+The current contents include:
+- Programming fundamentals tasks
+- Object-oriented programming tasks
+- Data structures and algorithm-focused work
+- Standalone mini-systems and games
 
-### 2. 💼 Freelance & Client Work
-Real-world solutions delivered to clients, focusing on:
-* System resource management.
-* Console-based management systems.
-* Custom algorithm optimization.
+Representative folders include contact management, relation analysis, trie/hash-based dictionary work, and game-oriented implementations.
 
-### 3. 🛠️ Personal Practice
-Experimental code and small challenges solved to sharpen C++ proficiency.
+## Repository Growth Note
 
-## 🚀 How to Run
-Most projects in this repository are standalone console applications.
-1.  Open the project folder in **Visual Studio** or **VS Code**.
-2.  Compile using `g++` or your preferred compiler.
-    ```bash
-    g++ main.cpp -o app
-    ./app
-    ```
+This repository is actively expanding and should not be considered final. Additional C++ projects will continue to be pushed over time.
 
----
-*Created by [Your Name]*
+## Running Projects
+
+Most folders are self-contained C++ projects. A typical workflow is:
+
+```bash
+g++ main.cpp -o app
+./app
+```
+
+Some projects may include multiple source files, custom build settings, or IDE-specific project files. In those cases, compile using the project's expected toolchain in that folder.
