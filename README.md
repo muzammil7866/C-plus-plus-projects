@@ -1,6 +1,6 @@
 # C Plus Plus Projects 💻
 
-This repository presents a professional collection of C++ projects developed through academic rigor, algorithmic practice, and systems-level engineering.
+This repository presents a professional collection of C++ projects developed through algorithmic practice, systems-level engineering, and selected BS AI coursework in computing fundamentals.
 
 ## 🎯 Purpose
 
