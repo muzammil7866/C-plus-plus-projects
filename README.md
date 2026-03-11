@@ -16,6 +16,10 @@ This repository is a professional C++ project collection developed through algor
 
 The repository focuses on robust software design, efficient algorithm implementation, and maintainable C++ engineering practices.
 
+## BS AI Coursework Context
+
+Relevant coursework influence in this repository includes programming fundamentals, object-oriented programming, and data structures and algorithms.
+
 ## Business Goals
 
 - Develop performance-conscious software components for practical systems use.
